@@ -1,0 +1,3 @@
+[submodule "static/example_src/express-utils-template"]
+	path = static/example_src/express-utils-template
+	url = https://github.com/Trickfilm400/express-utils-template

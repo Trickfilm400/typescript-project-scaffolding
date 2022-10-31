@@ -1,0 +1,47 @@
+{
+  "name": "create-typescript-project-scaffolding",
+  "version": "0.0.0-dev-02-00",
+  "description": "Scaffold your new Typescript project with everything you need",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "dev": "ts-node-dev --respawn --no-deps --rs --cls ./src/index.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "template",
+    "typescript"
+  ],
+  "author": "Nico Wagner",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/inquirer": "^9.0.2",
+    "@types/node": "^18.11.8",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "type-fest": "^3.1.0",
+    "typescript": "^4.8.4"
+  },
+  "bin": {
+    "create-typescript-new-project-scaffolding": "./dist/index.js",
+    "typescript-new-project-scaffolding": "./dist/index.js",
+    "ts-scaffold": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "inquirer": "^9.1.4"
+  },
+  "type": "module"
+}
