@@ -65,4 +65,18 @@ export interface IPrompt {
    * @since 01.11.2022
    */
   'project-database-driver': ('mongoose' | 'typeorm' | 'mysql' | 'mysql2' | 'mongodb' | 'redis' | 'none')[];
+  /**
+   * Run ncu for fetching latest package versions from npmjs
+   * @version 1.0.0
+   * @author Nico W.
+   * @since 05.11.2022
+   */
+  'project-ncu-packages': boolean;
+  /**
+   * run npm install for installing packages
+   * @version 1.0.0
+   * @author Nico W.
+   * @since 05.11.2022
+   */
+  'project-npm-install-packages': boolean;
 }
