@@ -44,7 +44,8 @@
     "ts-scaffold": "./dist/index.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "static"
   ],
   "dependencies": {
     "inquirer": "^9.1.4"
