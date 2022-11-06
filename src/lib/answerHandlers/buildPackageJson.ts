@@ -226,6 +226,10 @@ export default class BuildPackageJson {
     }
   }
   public save(filePath: string) {
+    //create path if not exist
+    if (!fs.existsSync(filePath)) {
+      fs.mkdirSync(filePath);
+    }
     fs.writeFileSync(path.join(filePath, 'package.json'), JSON.stringify(this.json, null, 4));
   }
 }

@@ -9,7 +9,7 @@ console.log('\nStarting Scaffolder...\n');
 //start
 inquirer
   .prompt(promptArray)
-  .then(answerHandler)
+  .then((x) => answerHandler.handler(x))
   .catch((error) => {
     console.error('There was an unexpected error:');
     console.error(error);
