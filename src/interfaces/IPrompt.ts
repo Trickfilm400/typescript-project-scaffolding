@@ -73,7 +73,7 @@ export interface IPrompt {
    * @author Nico W.
    * @since 01.11.2022
    */
-  'project-database-driver': ('mongoose' | 'typeorm' | 'mysql' | 'mysql2' | 'mongodb' | 'redis' | 'none')[];
+  'project-database-driver': ('mongoose' | 'typeorm' | 'mysql' | 'mysql2' | 'mongodb' | 'redis')[];
   /**
    * Run ncu for fetching latest package versions from npmjs
    * @version 1.0.0

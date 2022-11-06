@@ -32,7 +32,7 @@ export const promptArray: QuestionCollection<IPrompt> = [
     type: 'confirm',
     name: 'project-dockerfile-enabled',
     message: mP() + 'Add Dockerfile?',
-    default: 'yes',
+    default: true,
     ...additionalObjects,
     when: (answers) => answers['project-type'] !== 'npm-package',
   },
@@ -49,13 +49,14 @@ export const promptArray: QuestionCollection<IPrompt> = [
     choices: ['eslint', 'prettier', 'convict', 'ts-node-dev', 'winston', 'joi', 'amqp', 'mqtt'],
     name: 'project-additional-dependencies',
     message: mP() + 'Additional Packages:',
+    default: ['eslint', 'prettier', 'ts-node-dev', 'winston'],
     ...additionalObjects,
   },
   {
     type: 'confirm',
     name: 'project-testing-enabled',
     message: mP() + 'Add Test-Frameworks?',
-    default: 'yes',
+    default: true,
     ...additionalObjects,
   },
   {
@@ -68,10 +69,9 @@ export const promptArray: QuestionCollection<IPrompt> = [
   },
   {
     type: 'checkbox',
-    choices: ['mongoose', 'typeorm', 'mysql', 'mysql2', 'mongodb', 'redis', 'none'],
+    choices: ['mongoose', 'typeorm', 'mysql', 'mysql2', 'mongodb', 'redis'],
     message: mP() + 'Database Driver:',
     name: 'project-database-driver',
-    default: 'none',
     ...additionalObjects,
   },
   {
@@ -79,14 +79,14 @@ export const promptArray: QuestionCollection<IPrompt> = [
     message:
       mP() + 'Run ncu (npm-check-updates) to force-install all latest package versions? (MAY BREAK EXAMPLE FILES):',
     name: 'project-ncu-packages',
-    default: 'no',
+    default: false,
     ...additionalObjects,
   },
   {
     type: 'confirm',
     message: mP() + 'Run npm install to install dependencies?',
     name: 'project-npm-install-packages',
-    default: 'no',
+    default: false,
     ...additionalObjects,
   },
 ];
