@@ -149,26 +149,26 @@ export default class BuildPackageJson {
     }
     //endregion
     //region TESTING_DEPENDENCIES
-    if (this.answers['project-testing-dependencies'].includes('nyc')) {
+    if (this.answers['project-testing-dependencies']?.includes('nyc')) {
       this.json['devDependencies']['nyc'] = '@latest';
     }
-    if (this.answers['project-testing-dependencies'].includes('jest')) {
+    if (this.answers['project-testing-dependencies']?.includes('jest')) {
       this.json['devDependencies']['jest'] = '@latest';
     }
-    if (this.answers['project-testing-dependencies'].includes('chai-http')) {
+    if (this.answers['project-testing-dependencies']?.includes('chai-http')) {
       this.json['devDependencies']['chai'] = '@latest';
       this.json['devDependencies']['chai-http'] = '@latest';
     }
-    if (this.answers['project-testing-dependencies'].includes('cypress')) {
+    if (this.answers['project-testing-dependencies']?.includes('cypress')) {
       this.json['devDependencies']['cypress'] = '@latest';
     }
-    if (this.answers['project-testing-dependencies'].includes('mocha')) {
+    if (this.answers['project-testing-dependencies']?.includes('mocha')) {
       this.json['devDependencies']['mocha'] = '@latest';
       this.json['devDependencies']['@types/mocha'] = '@latest';
       if (this.answers['project-cicd-pipeline'] == 'gitlab')
         this.json['devDependencies']['mocha-junit-reporter'] = '@latest';
     }
-    if (this.answers['project-testing-dependencies'].includes('vitest')) {
+    if (this.answers['project-testing-dependencies']?.includes('vitest')) {
       this.json['devDependencies']['vitest'] = '@latest';
     }
     //endregion
