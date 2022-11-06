@@ -46,7 +46,7 @@ export const promptArray: QuestionCollection<IPrompt> = [
   },
   {
     type: 'checkbox',
-    choices: ['eslint', 'prettier', 'convict', 'ts-node-dev', 'winston', 'joi'],
+    choices: ['eslint', 'prettier', 'convict', 'ts-node-dev', 'winston', 'joi', 'amqp', 'mqtt'],
     name: 'project-additional-dependencies',
     message: mP() + 'Additional Packages:',
     ...additionalObjects,

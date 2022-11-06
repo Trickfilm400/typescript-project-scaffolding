@@ -42,7 +42,16 @@ export interface IPrompt {
    * @author Nico W.
    * @since 01.11.2022
    */
-  'project-additional-dependencies': ('eslint' | 'prettier' | 'convict' | 'ts-node-dev' | 'winston' | 'joi')[];
+  'project-additional-dependencies': (
+    | 'eslint'
+    | 'prettier'
+    | 'convict'
+    | 'ts-node-dev'
+    | 'winston'
+    | 'joi'
+    | 'mqtt'
+    | 'amqp'
+  )[];
   /**
    * If testing should be added (unit tests, integration tests, e2e-tests or so)
    * Example Test files will be added
