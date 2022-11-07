@@ -21,7 +21,17 @@
   "homepage": "https://github.com/Trickfilm400/typescript-project-scaffolding/blob/master/readme.md",
   "keywords": [
     "template",
-    "typescript"
+    "typescript",
+    "created-with-typescript-new-project-scaffolding",
+    "scaffloder",
+    "scaffold-template",
+    "scaffolder",
+    "scaffolding",
+    "inquirer",
+    "npm-install",
+    "npm-init",
+    "npm-cli",
+    "scaffolder-project"
   ],
   "author": "Nico Wagner",
   "license": "ISC",
