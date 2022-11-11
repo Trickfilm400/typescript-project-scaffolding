@@ -25,4 +25,8 @@ export default class Name {
       Name.PROJECT_NAME = givenProjectString;
     }
   }
+
+  static validatePackageName(input: string) {
+    return /^(?:@[a-z0-9-*~][a-z0-9-*._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/.test(input);
+  }
 }

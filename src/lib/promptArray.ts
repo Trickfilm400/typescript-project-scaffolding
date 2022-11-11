@@ -1,6 +1,7 @@
 import { QuestionCollection } from 'inquirer';
 import { IPrompt } from '../interfaces/IPrompt.js';
 import { additionalObjects, mP } from '../util/helper.js';
+import Name from './answerHandlers/name.js';
 
 /**
  * Array with questions for the user for how to set up the new project
@@ -16,7 +17,7 @@ export const promptArray: QuestionCollection<IPrompt> = [
     message: mP() + 'The name of the project (. for current directory):',
     ...additionalObjects,
     validate(input: string): boolean | string | Promise<boolean | string> {
-      let isValidPathInput = /^(\/?[a-z0-9]+)+$/.test(input);
+      let isValidPathInput = Name.validatePackageName(input);
       if (!isValidPathInput && input === '.') isValidPathInput = true;
       return isValidPathInput ? true : "Please enter '.' for the current directory or a folder name like 'new-project'";
     },
