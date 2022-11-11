@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as fs from 'fs';
 
 /**
  * Get the Project Name and Project path where to create the new project files
@@ -24,6 +25,24 @@ export default class Name {
       Name.PROJECT_PATH = path.join(process.cwd(), givenProjectString);
       Name.PROJECT_NAME = givenProjectString;
     }
+  }
+
+  static VALIDATE_RETRY = 0;
+
+  static validate(input: string) {
+    let isValidPathInput = Name.validatePackageName(input);
+    if (!isValidPathInput && input === '.') isValidPathInput = true;
+    if (fs.existsSync(path.join(process.cwd(), input)) && fs.readdirSync(path.join(process.cwd(), input)).length > 0) {
+      this.VALIDATE_RETRY++;
+      if (this.VALIDATE_RETRY > 3) {
+        this.VALIDATE_RETRY = 0;
+        return true;
+      }
+      return `The given path is not empty (Press Enter ${
+        3 - this.VALIDATE_RETRY
+      } times again to force-use this folder)`;
+    } else this.VALIDATE_RETRY = 0;
+    return isValidPathInput ? true : "Please enter '.' for the current directory or a folder name like 'new-project'";
   }
 
   static validatePackageName(input: string) {

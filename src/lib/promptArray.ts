@@ -17,9 +17,7 @@ export const promptArray: QuestionCollection<IPrompt> = [
     message: mP() + 'The name of the project (. for current directory):',
     ...additionalObjects,
     validate(input: string): boolean | string | Promise<boolean | string> {
-      let isValidPathInput = Name.validatePackageName(input);
-      if (!isValidPathInput && input === '.') isValidPathInput = true;
-      return isValidPathInput ? true : "Please enter '.' for the current directory or a folder name like 'new-project'";
+      return Name.validate(input);
     },
   },
   {

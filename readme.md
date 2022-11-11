@@ -21,7 +21,7 @@ Ok to proceed? (y)
 
 | No of Question | Question                | Available Options                                                                                    | Default Value                                      | Description                                                                                                                                                                                                                               |
 |----------------|-------------------------|------------------------------------------------------------------------------------------------------|----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1              | Project-Name            | "." or any path-string                                                                               |                                                    | The Folder Name where to create the new project, use "." for the current directory                                                                                                                                                        |
+| 1              | Project-Name            | "." or any path-string                                                                               |                                                    | The Folder Name where to create the new project, use "." for the current directory (if some files already exist in the folder, you need to press Enter a few times to force use the given folder - Instructions are shown in the console) |
 | 2              | Project-Type            | `['http-api@express-utils', 'websocket-server', 'socket-io-server', 'npm-package', 'empty-project']` |                                                    | The Template for creating the new project, depending in this answer, custom project source files will be created                                                                                                                          |
 | 3              | Dockerfile              | `true` or `false`                                                                                    | `true`                                             | Add a Dockerfile to run the project as a docker container (not available if project type is `npm-package`)                                                                                                                                |
 | 4              | CI/CD Pipeline          | `['gitlab', 'github', 'none']`                                                                       | `github`                                           | A CI/CD Pipeline template (GitHub Actions or Gitlab Pipelines) which automatically is configured for the build and deployment of the project-type (push to NPM Registry or Docker Registry)                                               |
@@ -39,11 +39,11 @@ Ok to proceed? (y)
 - [ ] _(prio: high)_ readme
 - [ ] _(prio: high)_ ci/cd templates
 - [ ] _(prio: medium)_ winston logger file
-- [ ] _(prio: low)_ check if in current dir if "." provided something exists
+- [x] _(prio: low)_ check if in current dir if "." provided something exists
 - [ ] _(prio: none)_ additional project dependencies: //todo add jwt
 - [ ] _(prio: none)_ git init if git is detected? question
 - [ ] _(prio: none)_ testing jest/vitest etc. framework 
-- [ ] _(prio: none)_ run `ncu`?
+- [x] _(prio: none)_ run `ncu`?
 
 ## 🤝 Contributing
 Contributions, issues and feature requests are welcome!
