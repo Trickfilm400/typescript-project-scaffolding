@@ -41,7 +41,7 @@ Ok to proceed? (y)
 - [x] _(prio: medium)_ winston logger file
 - [x] _(prio: low)_ check if in current dir if "." provided something exists
 - [ ] _(prio: none)_ additional project dependencies: //todo add jwt
-- [ ] _(prio: none)_ git init if git is detected? question
+- [x] _(prio: none)_ git init if git is detected? question
 - [ ] _(prio: none)_ testing jest/vitest etc. framework 
 - [x] _(prio: none)_ run `ncu`?
 

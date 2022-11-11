@@ -2,6 +2,7 @@ import { QuestionCollection } from 'inquirer';
 import { IPrompt } from '../interfaces/IPrompt.js';
 import { additionalObjects, mP } from '../util/helper.js';
 import Name from './answerHandlers/name.js';
+import { spawn } from 'child_process';
 
 /**
  * Array with questions for the user for how to set up the new project
@@ -87,5 +88,20 @@ export const promptArray: QuestionCollection<IPrompt> = [
     name: 'project-npm-install-packages',
     default: false,
     ...additionalObjects,
+  },
+  {
+    type: 'confirm',
+    message: mP() + 'Run git init to initialize git?',
+    name: 'project-git-init',
+    default: false,
+    ...additionalObjects,
+    when: async () => {
+      try {
+        spawn('git', ['--version']);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    },
   },
 ];

@@ -74,6 +74,17 @@ class AnswerHandler {
         console.log(e);
       }
     }
+    // git init
+    if (this.answers['project-git-init']) {
+      try {
+        const r = spawn('git', ['init'], { cwd: Name.PROJECT_PATH });
+        r.stdout.on('data', (x) => console.log(x.toString()));
+        r.stderr.on('data', (x) => console.log(x.toString()));
+        r.on('error', (x) => console.error(x));
+      } catch (e) {
+        console.log(e);
+      }
+    }
     return 'Success';
   }
 }

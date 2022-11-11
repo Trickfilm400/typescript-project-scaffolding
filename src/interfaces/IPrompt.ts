@@ -88,4 +88,11 @@ export interface IPrompt {
    * @since 05.11.2022
    */
   'project-npm-install-packages': boolean;
+  /**
+   * run git init for creating a git repository
+   * @version 1.0.0
+   * @author Nico W.
+   * @since 11.11.2022
+   */
+  'project-git-init': boolean;
 }
