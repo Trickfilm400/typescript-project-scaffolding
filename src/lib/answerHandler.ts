@@ -2,6 +2,7 @@ import Name from './answerHandlers/name.js';
 import { IPrompt } from '../interfaces/IPrompt.js';
 import BuildPackageJson from './answerHandlers/buildPackageJson.js';
 import { CreateNewProjectFiles } from './answerHandlers/createNewProjectFiles.js';
+import { spawn } from 'child_process';
 
 /**
  * Handler Class for handling the answers given by user suer select menu
@@ -59,6 +60,20 @@ class AnswerHandler {
     }
     this.prepare_package_json.save(Name.PROJECT_PATH);
     this.prepare_CreateNewProjectFiles.run();
+    if (this.answers['project-npm-install-packages']) {
+      try {
+        let npmCommand = 'npm';
+        if (process.platform === 'win32') {
+          npmCommand = 'npm.cmd';
+        }
+        const r = spawn(npmCommand, ['install'], { cwd: Name.PROJECT_PATH });
+        r.stdout.on('data', (x) => console.log(x.toString()));
+        r.stderr.on('data', (x) => console.log(x.toString()));
+        r.on('error', (x) => console.error(x));
+      } catch (e) {
+        console.log(e);
+      }
+    }
     return 'Success';
   }
 }
