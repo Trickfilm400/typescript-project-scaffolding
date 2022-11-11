@@ -104,4 +104,11 @@ export const promptArray: QuestionCollection<IPrompt> = [
       }
     },
   },
+  {
+    type: 'checkbox',
+    choices: ['prettier'],
+    name: 'project-idea',
+    message: mP() + 'Select .idea Folder Config files settings:',
+    ...additionalObjects,
+  },
 ];

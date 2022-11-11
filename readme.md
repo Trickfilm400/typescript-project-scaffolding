@@ -31,6 +31,8 @@ Ok to proceed? (y)
 | 8              | Database Driver         | `['mongoose', 'typeorm', 'mysql', 'mysql2', 'mongodb', 'redis']`                                     |                                                    | Select a Database dependency for a DB connection (multiple answers can be possible)                                                                                                                                                       |
 | 9              | latest package versions | `true` or `false`                                                                                    | `false`                                            | If `true`, the latest npm package version will be installed, otherwise an hard-coded version will be used; If `true`, it is not guaranteed that the example files will be working, because it is only tested with the hard-coded versions |
 | 10             | npm install             | `true` or `false`                                                                                    | `false`                                            | If `true`, the dependencies selected will be installed with `npm install`; If not, the installation step will be skipped.                                                                                                                 |
+| 11             | git init                | `true` or `false`                                                                                    | `false`                                            | Create a git repository in the new project folder                                                                                                                                                                                         |
+| 12             | .idea/ folder files     | `['prettier']`                                                                                       |                                                    | Copy .idea files to the destination to auto-configure IDE settings                                                                                                                                                                        |
 
 ## Reference
 - npm package link: https://www.npmjs.com/package/create-typescript-project-scaffolding
@@ -38,12 +40,10 @@ Ok to proceed? (y)
 ## Todo
 - [ ] _(prio: high)_ readme
 - [ ] _(prio: high)_ ci/cd templates
-- [x] _(prio: medium)_ winston logger file
-- [x] _(prio: low)_ check if in current dir if "." provided something exists
-- [ ] _(prio: none)_ additional project dependencies: //todo add jwt
-- [x] _(prio: none)_ git init if git is detected? question
+- [ ] _(prio: medium)_ console logging
 - [ ] _(prio: none)_ testing jest/vitest etc. framework 
-- [x] _(prio: none)_ run `ncu`?
+- [ ] _(prio: none)_ additional project dependencies: //todo add jwt
+- [ ] _(prio: none)_ add more project templates??
 
 ## 🤝 Contributing
 Contributions, issues and feature requests are welcome!

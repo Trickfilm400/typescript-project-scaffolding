@@ -77,6 +77,19 @@ export class CreateNewProjectFiles {
    * @class
    */
   protected addGenericFiles() {
+    //region .idea folder
+    //create
+    if (this.answers['project-idea']?.length > 0 && !fs.existsSync(path.join(this.path, '.idea'))) {
+      fs.mkdirSync(path.join(this.path, '.idea'));
+    }
+    //copy files
+    if (this.answers['project-idea']?.includes('prettier')) {
+      fs.copyFileSync(
+        path.join(this.staticPath, 'idea', 'prettier.xml'),
+        path.join(this.path, '.idea', 'prettier.xml')
+      );
+    }
+    //endregion
     // copy winston file
     if (this.answers['project-additional-dependencies'].includes('winston')) {
       fs.copyFileSync(path.join(this.staticPath, 'ts', 'logger.ts'), path.join(this.path, 'src', 'logger.ts'));

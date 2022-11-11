@@ -95,4 +95,11 @@ export interface IPrompt {
    * @since 11.11.2022
    */
   'project-git-init': boolean;
+  /**
+   * copy IDE settings via .idea/ folder to the project
+   * @version 1.0.0
+   * @author Nico W.
+   * @since 11.11.2022
+   */
+  'project-idea': ['prettier'];
 }
