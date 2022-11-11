@@ -38,7 +38,7 @@ Ok to proceed? (y)
 ## Todo
 - [ ] _(prio: high)_ readme
 - [ ] _(prio: high)_ ci/cd templates
-- [ ] _(prio: medium)_ winston logger file
+- [x] _(prio: medium)_ winston logger file
 - [x] _(prio: low)_ check if in current dir if "." provided something exists
 - [ ] _(prio: none)_ additional project dependencies: //todo add jwt
 - [ ] _(prio: none)_ git init if git is detected? question

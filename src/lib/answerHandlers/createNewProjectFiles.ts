@@ -77,6 +77,11 @@ export class CreateNewProjectFiles {
    * @class
    */
   protected addGenericFiles() {
+    // copy winston file
+    if (this.answers['project-additional-dependencies'].includes('winston')) {
+      fs.copyFileSync(path.join(this.staticPath, 'ts', 'logger.ts'), path.join(this.path, 'src', 'logger.ts'));
+    }
+    // create readme.md
     fs.writeFileSync(
       path.join(this.path, 'readme.md'),
       `# ${this.projectName}\n\n2022\nCreated with ♥ by [typescript-project-scaffolding](google.de)`
