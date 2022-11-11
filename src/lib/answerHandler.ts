@@ -22,10 +22,10 @@ class AnswerHandler {
    * @since 06.11.2022
    * @param {IPrompt} answers - Given answers array to use
    */
-  handler(answers: IPrompt) {
+  async handler(answers: IPrompt) {
     this.answers = answers;
     this.prepare();
-    this.run();
+    return this.run();
   }
 
   /**
@@ -48,9 +48,18 @@ class AnswerHandler {
    * @since 06.11.2022
    * @private
    */
-  private run() {
+  private async run(): Promise<string> {
+    if (this.answers['project-ncu-packages']) {
+      try {
+        await this.prepare_package_json.fetchLatestPackageVersions();
+      } catch (error) {
+        console.log(error);
+        return error;
+      }
+    }
     this.prepare_package_json.save(Name.PROJECT_PATH);
     this.prepare_CreateNewProjectFiles.run();
+    return 'Success';
   }
 }
 

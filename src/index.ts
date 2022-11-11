@@ -10,6 +10,7 @@ console.log('\nStarting Scaffolder...\n(Press CTRL+C to cancel anytime...\n');
 inquirer
   .prompt(promptArray)
   .then((x) => answerHandler.handler(x))
+  .then((x) => console.log(x))
   .catch((error) => {
     console.error('There was an unexpected error:');
     console.error(error);
