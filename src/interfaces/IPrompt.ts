@@ -53,14 +53,6 @@ export interface IPrompt {
     | 'amqp'
   )[];
   /**
-   * If testing should be added (unit tests, integration tests, e2e-tests or so)
-   * Example Test files will be added
-   * @version 1.0.0
-   * @author Nico W.
-   * @since 01.11.2022
-   */
-  'project-testing-enabled': boolean;
-  /**
    * Select you testing frameworks for writing and executing your tests
    * @version 1.0.0
    * @author Nico W.

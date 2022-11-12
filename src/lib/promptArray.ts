@@ -53,19 +53,11 @@ export const promptArray: QuestionCollection<IPrompt> = [
     ...additionalObjects,
   },
   {
-    type: 'confirm',
-    name: 'project-testing-enabled',
-    message: mP() + 'Add Test-Frameworks?',
-    default: true,
-    ...additionalObjects,
-  },
-  {
     type: 'checkbox',
     choices: ['mocha', 'chai-http', 'nyc', 'cypress', 'jest', 'vitest'],
     name: 'project-testing-dependencies',
     message: mP() + 'Testing Packages:',
     ...additionalObjects,
-    when: (answers) => answers['project-testing-enabled'],
   },
   {
     type: 'checkbox',

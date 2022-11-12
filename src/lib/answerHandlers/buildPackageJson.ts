@@ -45,7 +45,8 @@ export default class BuildPackageJson {
    */
   private getScripts(): Record<string, string> {
     const testObj: Record<string, string> = {};
-    if (this.answers['project-testing-enabled']) {
+    //if testing packages are selected
+    if (this.answers['project-testing-dependencies']?.length > 0) {
       if (this.answers['project-testing-dependencies'].includes('mocha'))
         testObj['test:unit'] = 'mocha --exit -r ts-node/register test/*.ts';
       else if (this.answers['project-testing-dependencies'].includes('jest')) testObj['test:unit'] = 'jest test/*.ts';

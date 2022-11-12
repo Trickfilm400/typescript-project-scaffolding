@@ -23,7 +23,7 @@ export const addZero = (i: number) => (i < 10 ? '0' + i : i);
  * @author Nico W.
  * @since 01.11.2022
  */
-const length = 12;
+const length = 11;
 /**
  * Index Count for progress display in prompt Array
  * @version 1.0.0
