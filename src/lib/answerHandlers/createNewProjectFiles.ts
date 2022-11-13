@@ -89,6 +89,16 @@ export class CreateNewProjectFiles {
         path.join(this.path, '.idea', 'prettier.xml')
       );
     }
+    //create
+    if (this.answers['project-idea']?.length > 0 && !fs.existsSync(path.join(this.path, '.idea', 'jsLinters'))) {
+      fs.mkdirSync(path.join(this.path, '.idea', 'jsLinters'));
+    }
+    if (this.answers['project-idea']?.includes('eslint')) {
+      fs.copyFileSync(
+        path.join(this.staticPath, 'idea', 'jsLinters', 'eslint.xml'),
+        path.join(this.path, '.idea', 'jsLinters', 'eslint.xml')
+      );
+    }
     //endregion
     // copy winston file
     if (this.answers['project-additional-dependencies'].includes('winston')) {
