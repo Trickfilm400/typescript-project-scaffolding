@@ -4,7 +4,7 @@ import inquirer from 'inquirer';
 import { promptArray } from './lib/promptArray.js';
 import answerHandler from './lib/answerHandler.js';
 
-console.log('\nStarting Scaffolder...\n(Press CTRL+C to cancel anytime...\n');
+console.log('\nStarting Scaffolder...\n(Press CTRL+C to cancel anytime...)\n');
 
 //start
 inquirer

@@ -2,6 +2,13 @@
 
 > **Summary**: This package can create a new project file and folder structure with dependencies, example files and config files which **you** have selected to your needs!
 
+
+<p align="center">
+  <img src=".github/example.png" width="600" title="Example Run">
+  <img src=".github/folder.png" title="Created Folder">
+</p>
+
+
 ## Usage
 
 ### Run:
