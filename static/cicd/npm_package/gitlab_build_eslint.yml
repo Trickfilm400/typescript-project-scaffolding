@@ -1,0 +1,43 @@
+stages:
+  - test
+  - push
+
+# add "." in front of name to disable
+eslint:
+  image: node:16-alpine3.16
+  ####
+  stage: test
+  before_script:
+    - npm ci
+  script:
+    - npm run eslint
+
+
+.base:
+  needs:
+    - eslint
+  image: node:16-alpine3.16
+  stage: push
+  before_script:
+    - "uname -a"
+    - "npm config set @${CI_PROJECT_ROOT_NAMESPACE}:registry=${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/npm/"
+    - "npm config set //${CI_SERVER_HOST}/api/v4/packages/npm/:_authToken=${CI_JOB_TOKEN}"
+    - "npm config set //${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}"
+
+Push latest:
+  extends: .base
+  script:
+    - npm ci
+    - npm run build
+    - "npm version prerelease --preid branch-$CI_COMMIT_BRANCH-$CI_COMMIT_SHORT_SHA"
+    - "npm publish --tag git-latest-commit"
+
+Push tag:
+  extends: .base
+  only:
+    - tags
+  script:
+    - npm ci
+    - npm run build
+    - "npm version --no-git-tag-version $CI_COMMIT_TAG"
+    - "npm publish --tag latest"
