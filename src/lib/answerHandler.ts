@@ -37,8 +37,11 @@ class AnswerHandler {
    * @private
    */
   private prepare() {
+    console.log('\n\nPreparing...');
     new Name(this.answers['project-name']);
+    console.log('Creating package.json file...');
     this.prepare_package_json = new BuildPackageJson(Name.PROJECT_NAME, this.answers);
+    console.log('Creating project files...');
     this.prepare_CreateNewProjectFiles = new CreateNewProjectFiles(this.answers, Name.PROJECT_PATH, Name.PROJECT_NAME);
   }
 
@@ -51,6 +54,7 @@ class AnswerHandler {
    */
   private async run(): Promise<string> {
     if (this.answers['project-ncu-packages']) {
+      console.log('Updating packages...');
       try {
         await this.prepare_package_json.fetchLatestPackageVersions();
       } catch (error) {
@@ -58,9 +62,12 @@ class AnswerHandler {
         return error;
       }
     }
+    console.log('Saving package.json file...');
     this.prepare_package_json.save(Name.PROJECT_PATH);
+    console.log('Writing project files to disk...');
     this.prepare_CreateNewProjectFiles.run();
     if (this.answers['project-npm-install-packages']) {
+      console.log('Installing packages (running "npm install")...');
       try {
         let npmCommand = 'npm';
         if (process.platform === 'win32') {
@@ -76,6 +83,7 @@ class AnswerHandler {
     }
     // git init
     if (this.answers['project-git-init']) {
+      console.log('Initializing git (running "git init")...');
       try {
         const r = spawn('git', ['init'], { cwd: Name.PROJECT_PATH });
         r.stdout.on('data', (x) => console.log(x.toString()));
@@ -85,7 +93,7 @@ class AnswerHandler {
         console.log(e);
       }
     }
-    return 'Success';
+    return `\n\nSuccessfully created new project (${Name.PROJECT_NAME})\n\n:)`;
   }
 }
 

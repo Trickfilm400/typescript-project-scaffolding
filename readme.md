@@ -37,11 +37,9 @@ Ok to proceed? (y)
 - npm package link: https://www.npmjs.com/package/create-typescript-project-scaffolding
 
 ## Todo
-- [ ] _(prio: high)_ readme
+- [ ] _(prio: high)_ readme (pictures, videos)
 - [ ] _(prio: high)_ ci/cd templates
-- [ ] _(prio: medium)_ console logging
 - [ ] _(prio: none)_ testing jest/vitest etc. framework 
-- [ ] _(prio: none)_ additional project dependencies: //todo add jwt
 - [ ] _(prio: none)_ add more project templates??
 
 ## 🤝 Contributing
