@@ -1,0 +1,106 @@
+stages:
+  - test
+  - build
+  - push
+
+.docker_login: &docker_login
+  - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+
+
+variables:
+  DOCKER_BUILDKIT: 1
+  DOCKER_TLS_CERTDIR: "/certs"
+
+include:
+  - template: Security/SAST.gitlab-ci.yml
+  - template: Security/Container-Scanning.gitlab-ci.yml
+  - template: Security/Secret-Detection.gitlab-ci.yml
+  #  - template: Code-Quality.gitlab-ci.yml
+
+eslint:
+  image: node:16-alpine3.16
+  ####
+  stage: test
+  allow_failure: true
+  timeout: 5m
+  before_script:
+    - npm ci
+  script:
+    - npm run eslint
+
+unit-test:
+  variables:
+    NODE_ENV: test
+  image: node:16-alpine3.16
+  ####
+  stage: test
+  retry: 1
+  timeout: 5m
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  before_script:
+    - npm ci
+  script:
+    - npm test
+  artifacts:
+    reports:
+      junit:
+        - test-results.xml
+      cobertura:
+        - coverage/cobertura-coverage.xml
+
+Build:
+  image: docker:20
+  stage: build
+  retry: 2
+  needs:
+    - unit-test
+    - eslint
+  before_script:
+    - *docker_login
+  script:
+    - "docker -v"
+    #builder
+    - docker build --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from $CI_REGISTRY_IMAGE/builder:latest --target builder -t $CI_REGISTRY_IMAGE/builder:latest .
+    #final image
+    - docker build --build-arg APP_VERSION=$CI_COMMIT_SHORT_SHA --build-arg BUILDKIT_INLINE_CACHE=1 --cache-from $CI_REGISTRY_IMAGE/builder:latest --cache-from $CI_REGISTRY_IMAGE:latest -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    # push both
+    - docker push $CI_REGISTRY_IMAGE/builder:latest
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+
+container_scanning:
+  stage: push
+  needs:
+    - Build
+
+
+Push latest:
+  image: docker:20
+  variables:
+    GIT_STRATEGY: none
+  stage: push
+  needs:
+    - Build
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  before_script:
+    - *docker_login
+  script:
+    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE:latest
+    - docker push $CI_REGISTRY_IMAGE:latest
+
+Push tag:
+  image: docker:20
+  variables:
+    GIT_STRATEGY: none
+  stage: push
+  needs:
+    - Build
+  only:
+    - tags
+  before_script:
+    - *docker_login
+  script:
+    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
