@@ -47,7 +47,7 @@ Ok to proceed? (y)
 
 ## Todo
 - [x] _(prio: high)_ readme (pictures, videos)
-- [ ] _(prio: high)_ ci/cd templates
+- [x] _(prio: high)_ ci/cd templates
 - [ ] _(prio: none)_ testing jest/vitest etc. framework 
 <!--
 - [ ] _(prio: none)_ add more project templates??
