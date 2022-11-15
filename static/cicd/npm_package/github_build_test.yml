@@ -1,0 +1,40 @@
+name: ESLint
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install modules
+        run: npm ci
+      - name: Run Tests
+        run: npm test
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm run build
+      - run: npm version prerelease --no-git-tag-version --preid ${{ github.ref_name }}-${{ github.sha }}
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          access: public
+          token: ${{ secrets.NPM_TOKEN }}
+          tag: beta
+          check-version: false
