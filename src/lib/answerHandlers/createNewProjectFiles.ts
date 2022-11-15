@@ -100,6 +100,29 @@ export class CreateNewProjectFiles {
       );
     }
     //endregion
+    //region cicd template files
+    const eslint = this.answers['project-additional-dependencies'].includes('eslint');
+    const testing = this.answers['project-testing-dependencies'].length > 0;
+    let templateFile = 'only';
+    if (testing) templateFile = 'test';
+    if (eslint) templateFile = 'eslint';
+    if (testing && eslint) templateFile = 'eslint_test';
+    if (this.answers['project-cicd-pipeline'] !== 'none') {
+      if (this.answers['project-cicd-pipeline'] === 'github')
+        fs.mkdirSync(path.join(this.path, '.github', 'workflows'), { recursive: true });
+      fs.copyFileSync(
+        path.join(
+          this.staticPath,
+          'cicd',
+          this.answers['project-type'] === 'npm-package' ? 'npm_package' : 'docker',
+          `${this.answers['project-cicd-pipeline'] === 'github' ? 'github' : 'gitlab'}_build_${templateFile}.yml`
+        ),
+        this.answers['project-cicd-pipeline'] === 'github'
+          ? path.join(this.path, '.github', 'workflows', 'ci.yml')
+          : path.join(this.path, '.gitlab-ci.yml')
+      );
+    }
+    //endregion
     // copy winston file
     if (this.answers['project-additional-dependencies'].includes('winston')) {
       fs.copyFileSync(path.join(this.staticPath, 'ts', 'logger.ts'), path.join(this.path, 'src', 'logger.ts'));
