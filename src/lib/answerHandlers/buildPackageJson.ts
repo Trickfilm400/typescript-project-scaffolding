@@ -70,7 +70,7 @@ export default class BuildPackageJson {
     }
     if (this.answers['project-additional-dependencies'].includes('ts-node-dev'))
       testObj['dev'] = 'ts-node-dev --respawn --no-deps --rs --cls ./src/index.ts';
-    if (this.answers['project-additional-dependencies'].includes('eslint')) testObj['eslint'] = 'eslint src/**';
+    if (this.answers['project-additional-dependencies'].includes('eslint')) testObj['eslint'] = 'eslint src/**/*.ts';
     return {
       start: 'node .',
       build: 'tsc',
