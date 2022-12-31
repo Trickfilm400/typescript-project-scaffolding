@@ -2,7 +2,7 @@ import * as ncu from 'npm-check-updates';
 
 class PackageVersions {
   static STATIC_DEPENDENCY_VERSIONS: Record<string, string> = {
-    '@types/node': '18.11.16',
+    '@types/node': '18.11.18',
     '@types/convict': '6.1.1',
     '@types/amqplib': '0.10.0',
     '@types/jest': '27.0.3',
@@ -10,7 +10,7 @@ class PackageVersions {
     '@types/chai': '4.2.21',
     '@types/chai-http': '4.3.11',
     '@types/cypress': '9.0.0',
-    '@typescript-eslint/eslint-plugin': '5.46.1',
+    '@typescript-eslint/eslint-plugin': '5.47.1',
     '@typescript-eslint/parser': '5.46.1',
     '@types/mysql': '2.15.21',
     '@kopf02/express-utils': '1.2.11-main-19a0c74e028fa348bf15b0c3928742c7de690ab7.0',
@@ -19,7 +19,7 @@ class PackageVersions {
     'ts-node': '10.9.1',
     'ts-node-dev': '2.0.0',
     convict: '6.2.3',
-    eslint: '8.29.0',
+    eslint: '8.30.0',
     'eslint-plugin-prettier': '4.2.1',
     winston: '3.8.2',
     joi: '17.7.0',
