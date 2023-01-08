@@ -60,4 +60,4 @@ Feel free to create issues here on GitHub.
 ----
 #### Give a ⭐️ if this project helped you!
 
-2022 Trickfilm400 
+2022-2023 Trickfilm400 
