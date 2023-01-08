@@ -13,6 +13,21 @@
 
 ## Usage
 
+You can create the following project templates:
+- http-api server with express
+- websocket server with plain websocket
+- socket.io server
+- a generic npm package for publish etc.
+- an empty project with no presets, just the developer dependencies
+
+Every Project can have
+- `eslint`, `prettier`, `convict`, `winston`, `joi`, `amqp`, `mqtt` configured
+- as well as different test frameworks like `jest`, `mocha`,  `cypress`, `vitest` with code coverage via `nyc`
+- different database dependencies can be selected: `mongoose`, `typeorm`, `mysql` / `mysql2`, `mongodb`, `redis`
+- Dockerfile configuration can be created
+- CI/CD templates for `github actions` and `gitlab ci` can be created
+
+
 ### Run:
 ```shell
 npm init typescript-project-scaffolding
