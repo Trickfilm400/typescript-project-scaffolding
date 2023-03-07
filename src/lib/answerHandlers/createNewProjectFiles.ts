@@ -136,10 +136,7 @@ export class CreateNewProjectFiles {
     //copy a tsconfig file with declarations true if it is a npm module
     switch (this.answers['project-type']) {
       case 'npm-package':
-        fs.copyFileSync(
-          path.join(this.staticPath, 'tsconfig_npm_module.json'),
-          path.join(this.path, 'tsconfig_npm_module.json')
-        );
+        fs.copyFileSync(path.join(this.staticPath, 'tsconfig_npm_module.json'), path.join(this.path, 'tsconfig.json'));
         break;
       default:
         fs.copyFileSync(path.join(this.staticPath, 'tsconfig.json'), path.join(this.path, 'tsconfig.json'));
