@@ -18,7 +18,7 @@ export default class Name {
    */
   static PROJECT_NAME = '';
   constructor(givenProjectString: string) {
-    if (givenProjectString === '.') {
+    if (givenProjectString === '.' || givenProjectString === '') {
       Name.PROJECT_PATH = process.cwd();
       Name.PROJECT_NAME = path.basename(process.cwd());
     } else {
