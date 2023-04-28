@@ -123,8 +123,11 @@ export class CreateNewProjectFiles {
       );
     }
     //endregion
-    // copy winston file
-    if (this.answers['project-additional-dependencies'].includes('winston')) {
+    // copy winston file (only if not http api, because there the logger is integrated already)
+    if (
+      this.answers['project-additional-dependencies'].includes('winston') &&
+      this.answers['project-type'] !== 'http-api@express-utils'
+    ) {
       fs.copyFileSync(path.join(this.staticPath, 'ts', 'logger.ts'), path.join(this.path, 'src', 'logger.ts'));
     }
     // create readme.md
