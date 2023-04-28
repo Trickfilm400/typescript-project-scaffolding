@@ -133,7 +133,7 @@ export class CreateNewProjectFiles {
     // create readme.md
     fs.writeFileSync(
       path.join(this.path, 'readme.md'),
-      `# ${this.projectName}\n\n2022\nCreated with ♥ by [typescript-project-scaffolding](https://github.com/Trickfilm400/typescript-project-scaffolding)`
+      `# ${this.projectName}\n\n&copy; 2023\n\nCreated with ♥ by [typescript-project-scaffolding](https://github.com/Trickfilm400/typescript-project-scaffolding)`
     );
     fs.copyFileSync(path.join(this.staticPath, 'gitignore'), path.join(this.path, '.gitignore'));
     //copy a tsconfig file with declarations true if it is a npm module
