@@ -30,7 +30,7 @@ Every Project can have
 
 ### Run:
 ```shell
-npm init typescript-project-scaffolding
+npm init typescript-project-scaffolding@latest
 ```
 
 If there is a question:
