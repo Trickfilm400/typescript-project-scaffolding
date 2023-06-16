@@ -58,7 +58,7 @@ export class CreateNewProjectFiles {
       fs.mkdirSync(this.path);
     }
     //only add if Dockerfile option was selected
-    if (this.answers['project-dockerfile-enabled']) {
+    if (this.answers['project-dockerfile-enabled'] && this.answers["project-type"] !== "http-api@express-utils") {
       this.addDocker();
     }
     //eslint / prettier
@@ -200,6 +200,11 @@ export class CreateNewProjectFiles {
         fs.cpSync(
           path.join(this.staticPath, 'example_src', 'express-utils-template', 'test'),
           path.join(this.path, 'test'),
+          { recursive: true }
+        );
+        fs.cpSync(
+          path.join(this.staticPath, 'example_src', 'express-utils-template', 'Dockerfile'),
+          path.join(this.path, 'Dockerfile'),
           { recursive: true }
         );
         break;
