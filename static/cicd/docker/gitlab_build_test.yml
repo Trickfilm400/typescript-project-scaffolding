@@ -20,7 +20,7 @@ include:
 unit-test:
   variables:
     NODE_ENV: test
-  image: node:16-alpine3.16
+  image: node:18-alpine3.18
   ####
   stage: test
   retry: 1
@@ -32,13 +32,17 @@ unit-test:
     - npm test
   artifacts:
     reports:
+      coverage_report:
+        path: coverage/cobertura-coverage.xml
+        coverage_format: cobertura
       junit:
         - test-results.xml
-      cobertura:
-        - coverage/cobertura-coverage.xml
+
 
 Build:
   image: docker:20
+  services:
+    - name: docker:20-dind
   stage: build
   retry: 2
   needs:
@@ -63,6 +67,8 @@ container_scanning:
 
 Push latest:
   image: docker:20
+  services:
+    - name: docker:20-dind
   variables:
     GIT_STRATEGY: none
   stage: push
@@ -79,6 +85,8 @@ Push latest:
 
 Push tag:
   image: docker:20
+  services:
+    - name: docker:20-dind
   variables:
     GIT_STRATEGY: none
   stage: push

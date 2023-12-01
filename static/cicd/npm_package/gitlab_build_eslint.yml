@@ -4,7 +4,7 @@ stages:
 
 # add "." in front of name to disable
 eslint:
-  image: node:16-alpine3.16
+  image: node:18-alpine3.18
   ####
   stage: test
   before_script:
@@ -16,7 +16,7 @@ eslint:
 .base:
   needs:
     - eslint
-  image: node:16-alpine3.16
+  image: node:18-alpine3.18
   stage: push
   before_script:
     - "uname -a"

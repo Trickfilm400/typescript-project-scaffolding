@@ -20,6 +20,8 @@ include:
 
 Build:
   image: docker:20
+  services:
+    - name: docker:20-dind
   stage: build
   retry: 2
   before_script:
@@ -42,6 +44,8 @@ container_scanning:
 
 Push latest:
   image: docker:20
+  services:
+    - name: docker:20-dind
   variables:
     GIT_STRATEGY: none
   stage: push
@@ -58,6 +62,8 @@ Push latest:
 
 Push tag:
   image: docker:20
+  services:
+    - name: docker:20-dind
   variables:
     GIT_STRATEGY: none
   stage: push
