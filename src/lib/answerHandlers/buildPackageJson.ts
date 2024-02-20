@@ -233,7 +233,7 @@ export default class BuildPackageJson {
   private additional() {
     if (this.answers['project-type'] === 'npm-package') {
       this.json.files = ['dist', 'typings'];
-      this.json.typing = 'types/index.d.ts';
+      this.json.typings = 'types/index.d.ts';
     }
   }
 
