@@ -1,6 +1,6 @@
 {
   "name": "create-typescript-project-scaffolding",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Scaffold your new Typescript project with everything you need",
   "main": "./dist/index.js",
   "exports": {
