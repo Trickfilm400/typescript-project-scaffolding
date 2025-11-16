@@ -57,8 +57,14 @@ export class CreateNewProjectFiles {
     if (!fs.existsSync(this.path)) {
       fs.mkdirSync(this.path);
     }
+    if (this.answers['project-type'] === 'http-api@express-utils') {
+      fs.cpSync(path.join(this.staticPath, 'example_src', 'express-utils-template'), path.join(this.path), {
+        recursive: true,
+      });
+      return;
+    }
     //only add if Dockerfile option was selected
-    if (this.answers['project-dockerfile-enabled'] && this.answers["project-type"] !== "http-api@express-utils") {
+    if (this.answers['project-dockerfile-enabled']) {
       this.addDocker();
     }
     //eslint / prettier

@@ -1,14 +1,12 @@
 #!/usr/bin/env node
 //imports
-import inquirer from 'inquirer';
-import { promptArray } from './lib/promptArray.js';
+import { askQuestions } from './lib/promptArray.js';
 import answerHandler from './lib/answerHandler.js';
 
 console.log('\nStarting Scaffolder...\n(Press CTRL+C to cancel anytime...)\n');
 
 //start
-inquirer
-  .prompt(promptArray)
+askQuestions()
   .then((x) => answerHandler.handler(x))
   .then((x) => console.log(x))
   .catch((error) => {

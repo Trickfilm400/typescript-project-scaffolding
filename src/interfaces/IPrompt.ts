@@ -92,5 +92,5 @@ export interface IPrompt {
    * @author Nico W.
    * @since 11.11.2022
    */
-  'project-idea': ['prettier', 'eslint'];
+  'project-idea': ('prettier' | 'eslint')[];
 }
