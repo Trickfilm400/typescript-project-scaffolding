@@ -24,4 +24,4 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm version prerelease --no-git-tag-version --preid ${{ github.ref_name }}-${{ github.sha }}
-      - run: npm publish
+      - run: npm publish --tag=beta
