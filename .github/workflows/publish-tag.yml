@@ -1,12 +1,21 @@
 name: Release-Full
 
 on:
+  workflow_run:
+    workflows: [ "eslint" ]
+    branches: [ master ]
+    types:
+      - completed
   release:
     types:
       - published
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
-  publish:
+  publish-beta:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -18,8 +27,18 @@ jobs:
       - run: npm ci
       - run: npm run build
       #- run: npm version prerelease --no-git-tag-version --preid ${{ github.ref_name }}-${{ github.sha }}
-      - uses: JS-DevTools/npm-publish@v4
+      - run: npm publish --tag=beta
+  publish-tag:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'release'
+    steps:
+      - uses: actions/checkout@v5
         with:
-          access: public
-          token: ${{ secrets.NPM_TOKEN }}
-          tag: latest
+          submodules: recursive
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm run build
+      #- run: npm version prerelease --no-git-tag-version --preid ${{ github.ref_name }}-${{ github.sha }}
+      - run: npm publish
