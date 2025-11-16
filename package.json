@@ -50,6 +50,11 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.4"
   },
+  "bin": {
+    "create-typescript-new-project-scaffolding": "dist/index.js",
+    "typescript-new-project-scaffolding": "dist/index.js",
+    "ts-scaffold": "dist/index.js"
+  },
   "files": [
     "dist",
     "static"
