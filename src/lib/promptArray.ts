@@ -40,8 +40,7 @@ export async function askQuestions() {
   });
   promptArray['project-additional-dependencies'] = await checkbox({
     choices: [
-      { name: 'eslint', value: 'eslint', checked: true },
-      { name: 'prettier', value: 'prettier', checked: true },
+      { name: 'eslint_prettier', value: 'eslint_prettier', checked: true },
       { name: 'convict', value: 'convict' },
       { name: 'ts-node-dev', value: 'ts-node-dev', checked: true },
       { name: 'winston', value: 'winston', checked: true },
