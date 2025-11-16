@@ -7,6 +7,10 @@ on:
     types:
       - completed
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -20,8 +24,4 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm version prerelease --no-git-tag-version --preid ${{ github.ref_name }}-${{ github.sha }}
-      - uses: JS-DevTools/npm-publish@v4
-        with:
-          access: public
-          token: ${{ secrets.NPM_TOKEN }}
-          tag: beta
+      - run: npm publish
