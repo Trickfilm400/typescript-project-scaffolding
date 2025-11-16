@@ -14,7 +14,7 @@ jobs:
           submodules: recursive
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
       - run: npm ci
       - run: npm run build
       #- run: npm version prerelease --no-git-tag-version --preid ${{ github.ref_name }}-${{ github.sha }}
