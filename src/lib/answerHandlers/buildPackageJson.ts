@@ -70,7 +70,8 @@ export default class BuildPackageJson {
     }
     if (this.answers['project-additional-dependencies'].includes('ts-node-dev'))
       testObj['dev'] = 'ts-node-dev --respawn --no-deps --rs --cls ./src/index.ts';
-    if (this.answers['project-additional-dependencies'].includes('eslint')) testObj['eslint'] = 'eslint src/**/*.ts';
+    if (this.answers['project-additional-dependencies'].includes('eslint_prettier'))
+      testObj['eslint'] = 'eslint src/**/*.ts';
     return {
       start: 'node .',
       build: 'tsc',
@@ -130,15 +131,10 @@ export default class BuildPackageJson {
       this.json['dependencies']['convict'] = this.depVer('convict');
       this.json['devDependencies']['@types/convict'] = this.depVer('@types/convict');
     }
-    if (this.answers['project-additional-dependencies'].includes('eslint')) {
-      this.json['devDependencies']['eslint'] = this.depVer('eslint');
-    }
-    if (this.answers['project-additional-dependencies'].includes('prettier')) {
-      this.json['devDependencies']['@typescript-eslint/eslint-plugin'] = this.depVer(
-        '@typescript-eslint/eslint-plugin'
+    if (this.answers['project-additional-dependencies'].includes('eslint_prettier')) {
+      this.json['devDependencies']['@trickfilm400/eslint-shared-config'] = this.depVer(
+        '@trickfilm400/eslint-shared-config'
       );
-      this.json['devDependencies']['@typescript-eslint/parser'] = this.depVer('@typescript-eslint/parser');
-      this.json['devDependencies']['eslint-plugin-prettier'] = this.depVer('eslint-plugin-prettier');
     }
     if (this.answers['project-additional-dependencies'].includes('ts-node-dev')) {
       this.json['devDependencies']['ts-node'] = this.depVer('ts-node');

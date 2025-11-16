@@ -43,8 +43,7 @@ export interface IPrompt {
    * @since 01.11.2022
    */
   'project-additional-dependencies': (
-    | 'eslint'
-    | 'prettier'
+    | 'eslint_prettier'
     | 'convict'
     | 'ts-node-dev'
     | 'winston'

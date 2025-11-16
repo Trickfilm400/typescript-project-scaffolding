@@ -101,7 +101,7 @@ export class CreateNewProjectFiles {
     }
     //endregion
     //region cicd template files
-    const eslint = this.answers['project-additional-dependencies'].includes('eslint');
+    const eslint = this.answers['project-additional-dependencies'].includes('eslint_prettier');
     const testing = this.answers['project-testing-dependencies'].length > 0;
     let templateFile = 'only';
     if (testing) templateFile = 'test';
@@ -167,12 +167,9 @@ export class CreateNewProjectFiles {
    * @class
    */
   protected addEslintPrettier() {
-    if (this.answers['project-additional-dependencies'].includes('prettier')) {
+    if (this.answers['project-additional-dependencies'].includes('eslint_prettier')) {
       fs.copyFileSync(path.join(this.staticPath, 'prettierrc'), path.join(this.path, '.prettierrc'));
-    }
-
-    if (this.answers['project-additional-dependencies'].includes('eslint')) {
-      fs.copyFileSync(path.join(this.staticPath, 'eslintrc.js'), path.join(this.path, '.eslintrc.js'));
+      fs.copyFileSync(path.join(this.staticPath, 'eslint.config.mjs'), path.join(this.path, 'eslint.config.mjs'));
     }
   }
 
