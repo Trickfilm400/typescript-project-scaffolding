@@ -8,7 +8,7 @@ class PackageVersions {
     '@types/jest': '^30.0.0',
     '@types/mocha': '^10.0.10',
     '@types/chai': '^5.2.3',
-    '@trickfilm400/eslint-shared-config': '^0.0.1',
+    '@trickfilm400/eslint-shared-config': '^0.0.2',
     '@types/mysql': '^2.15.27',
     '@kopf02/express-utils': '^2.0.0',
     '@types/express': '^5.0.5',
